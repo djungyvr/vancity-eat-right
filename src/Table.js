@@ -1,11 +1,6 @@
 import React from 'react';
 
 const styles = {
-	table: {
-		'borderSpacing': '10px',
-		'outline': '4px solid black',
-		'margin': '0 auto',
-	},
 	tableCellText: {
 		'textAlign': 'left',
 	},
@@ -20,10 +15,12 @@ const styles = {
 class Table extends React.Component {
 	render() {
 		return (
-			<table style={styles.table}>
-				<TableHeader/>
-				<TableBody menuItems={this.props.menuItems} onSelectMenuItem={this.props.onSelectMenuItem}/>
-			</table>
+			<div style={{overflow: 'auto'}}>
+				<table style={{width: '100%', maxWidth: '600px', margin: '0 auto', borderSpacing: '4px'}}>
+					<TableHeader/>
+					<TableBody menuItems={this.props.menuItems} onSelectMenuItem={this.props.onSelectMenuItem}/>
+				</table>
+			</div>
 		)
 	}
 }
@@ -31,16 +28,14 @@ class Table extends React.Component {
 class TableHeader extends React.Component {
 	render() {
 		return (
-			<thead>
-				<tr>
-					<th style={styles.tableCellText}>Name</th>
-					<th style={styles.tableCellNumber}>Calories</th>
-					<th style={styles.tableCellNumber}>Carbs(g)</th>
-					<th style={styles.tableCellNumber}>Protein (g)</th>
-					<th style={styles.tableCellNumber}>Fat (g)</th>
-					<th style={styles.tableCellNumber}>Size (g)</th>
-				</tr>
-			</thead>
+			<tr>
+				<th style={styles.tableCellText}>Name</th>
+				<th style={styles.tableCellNumber}>Calories</th>
+				<th style={styles.tableCellNumber}>Carbs(g)</th>
+				<th style={styles.tableCellNumber}>Protein(g)</th>
+				<th style={styles.tableCellNumber}>Fat(g)</th>
+				<th style={styles.tableCellNumber}>Size(g)</th>
+			</tr>
 		)
 	}
 }
@@ -61,9 +56,9 @@ class TableBody extends React.Component {
 	render() {
 		var menuItems = this.props.menuItems.map((item, index) => this.menuItem(item, index));
 		return (
-		<tbody>
-			{menuItems}
-		</tbody>
+			<tbody>
+				{menuItems}
+			</tbody>
 		)
 	}
 }

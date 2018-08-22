@@ -1,5 +1,5 @@
 const cactusClub = [
-	{name:"cactusfoo", calories:100, carbs:100, protein:10, fat:10,size:110000},
+	{name:"cactusfoocactusfoocactusfoocactusfoo", calories:100, carbs:100, protein:10, fat:10,size:110000},
 	{name:"cactusbar", calories:100, carbs:100, protein:10, fat:10,size:110000},
 	{name:"cactusbaz", calories:100, carbs:100, protein:10, fat:10,size:110000},
 	{name:"cactusfoo", calories:100, carbs:100, protein:10, fat:10,size:110000},
