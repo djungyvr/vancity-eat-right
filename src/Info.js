@@ -24,7 +24,8 @@ class Info extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			menuItems: [],
+			menuItems: this.props.restaurants["Cactus Club"],
+			selectedRestaurant: "Cactus Club",
 			selectedMenuItems: [],
 			nutritionTotal: {calories:0, carbs:0, protein:0, fat:0, size:0},
 		}
@@ -47,14 +48,15 @@ class Info extends React.Component {
 			size += menuItems[i].size;
 		}
 		this.setState(prevState => ({
-			nutritionTotal: {calories:calories, carbs:carbs, protein:protein, fat:fat, size:size} 
+			nutritionTotal: {calories:calories, carbs:carbs, protein:protein, fat:fat, size:size}
 		}));
 	}
 	onSelectRestaurant(name, e) {
 		console.log(e.target);
 		let menuItems = this.props.restaurants[name];
 		this.setState(prevState => ({
-			menuItems: menuItems
+			menuItems: menuItems,
+			selectedRestaurant: name
 		}));
 	}
 	onSelectMenuItem(item, e) {
@@ -75,8 +77,11 @@ class Info extends React.Component {
 		this.calculateTotals();
 		this.forceUpdate();
 	}
+	isSelected(restaurant) {
+		return restaurant === this.state.selectedRestaurant;
+	}
 	restaurantName(restaurant) {
-		return <p style={styles.names} onClick={(e) => this.onSelectRestaurant(restaurant, e)} key={restaurant}>{restaurant}</p>
+		return <p style={{display: 'inline-block', cursor: 'pointer', margin: '16px', textDecoration: this.isSelected(restaurant) ? 'underline': ''}} onClick={(e) => this.onSelectRestaurant(restaurant, e)} key={restaurant}>{restaurant}</p>
 	}
 	render() {
 		var restaurants = Object.keys(this.props.restaurants).map(name => this.restaurantName(name));
