@@ -2,24 +2,6 @@ import React from 'react';
 import Table from './Table';
 import Totals from './Totals';
 
-const styles = {
-	main: {
-		'minWidth': '100%',
-		'minHeight': '100%',
-	},
-	table: {
-		'textAlign': 'center',
-	},
-	names: {
-		'display': 'inline-block',
-		'cursor': 'pointer',
-		'margin': '16px',
-	},
-	totals: {
-		'verticalAlign': 'top',
-	},
-};
-
 class Info extends React.Component {
 	constructor(props) {
 		super(props);
@@ -75,7 +57,6 @@ class Info extends React.Component {
 			selectedMenuItems: menuItems
 		}));
 		this.calculateTotals();
-		this.forceUpdate();
 	}
 	isSelected(restaurant) {
 		return restaurant === this.state.selectedRestaurant;
@@ -86,19 +67,22 @@ class Info extends React.Component {
 	render() {
 		var restaurants = Object.keys(this.props.restaurants).map(name => this.restaurantName(name));
 		return (
-			<div style={styles.main}>
-				<div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<h3>Vancity Eat Smart</h3>
+				</div>
+				<div class="row justify-content-center">
 					{restaurants}
 				</div>
-				<div>
-					<div style={styles.totals}>
+				<div class="row">
+					<div class="col-md">
 						<Totals
 							menuItems={this.state.selectedMenuItems}
 							onDeleteMenuItem={this.onDeleteMenuItem}
 							nutritionTotal={this.state.nutritionTotal}
 						/>
 					</div>
-					<div style={{textAlign: 'center'}}>
+					<div class="col-md">
 						<Table
 							menuItems={this.state.menuItems}
 							onSelectMenuItem={this.onSelectMenuItem}
