@@ -6,6 +6,7 @@ class Info extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			autoIncrement: 1,
 			menuItems: this.props.restaurants["Cactus Club"],
 			selectedRestaurant: "Cactus Club",
 			selectedMenuItems: [],
@@ -23,18 +24,17 @@ class Info extends React.Component {
 		var fat = 0.0;
 		var size = 0.0;
 		for (var i = 0; i < menuItems.length; i++) {
-			calories += menuItems[i].calories;
-			carbs += menuItems[i].carbs;
-			protein += menuItems[i].protein;
-			fat += menuItems[i].fat;
-			size += menuItems[i].size;
+			calories += menuItems[i].item.calories;
+			carbs += menuItems[i].item.carbs;
+			protein += menuItems[i].item.protein;
+			fat += menuItems[i].item.fat;
+			size += menuItems[i].item.size;
 		}
 		this.setState(prevState => ({
-			nutritionTotal: {calories:calories, carbs:carbs, protein:protein, fat:fat, size:size}
+			nutritionTotal: {calories: calories, carbs: carbs, protein: protein, fat: fat, size: size}
 		}));
 	}
 	onSelectRestaurant(name, e) {
-		console.log(e.target);
 		let menuItems = this.props.restaurants[name];
 		this.setState(prevState => ({
 			menuItems: menuItems,
@@ -43,16 +43,20 @@ class Info extends React.Component {
 	}
 	onSelectMenuItem(item, e) {
 		var menuItems = this.state.selectedMenuItems;
-		menuItems.push(item);
+		menuItems.push({id: this.state.autoIncrement, item: item});
 		this.setState(prevState => ({
-			selectedMenuItems: menuItems
+			selectedMenuItems: menuItems,
+			autoIncrement: this.state.autoIncrement + 1
 		}));
 		this.calculateTotals();
 	}
-	onDeleteMenuItem(item, index, e) {
+	onDeleteMenuItem(id, e) {
 		var menuItems = this.state.selectedMenuItems;
-		menuItems.splice(index, 1);
-		console.log(menuItems);
+		for (var i = 0; i < menuItems.length; i++) {
+			if (menuItems[i].id === id) {
+				menuItems.splice(i, 1);
+			}
+		}
 		this.setState(prevState => ({
 			selectedMenuItems: menuItems
 		}));
@@ -67,22 +71,22 @@ class Info extends React.Component {
 	render() {
 		var restaurants = Object.keys(this.props.restaurants).map(name => this.restaurantName(name));
 		return (
-			<div class="container">
-				<div class="row justify-content-center">
-					<h3>Vancity Eat Smart</h3>
+			<div className="container">
+				<div className="row justify-content-center">
+					<h1>Vancity Eat Smart</h1>
 				</div>
-				<div class="row justify-content-center">
+				<div className="row justify-content-center">
 					{restaurants}
 				</div>
-				<div class="row">
-					<div class="col-md">
+				<div className="row">
+					<div className="col-md">
 						<Totals
 							menuItems={this.state.selectedMenuItems}
 							onDeleteMenuItem={this.onDeleteMenuItem}
 							nutritionTotal={this.state.nutritionTotal}
 						/>
 					</div>
-					<div class="col-md">
+					<div className="col-md">
 						<Table
 							menuItems={this.state.menuItems}
 							onSelectMenuItem={this.onSelectMenuItem}

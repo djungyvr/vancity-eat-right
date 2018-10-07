@@ -3,7 +3,7 @@ import React from 'react';
 class Table extends React.Component {
 	menuItem(item, index) {
 		return (
-			<tr key={item.name + index} onClick={(e) => this.props.onSelectMenuItem(item, e)}>
+			<tr style={{"cursor": "pointer"}} key={item.name + index} onClick={(e) => this.props.onSelectMenuItem(item, e)}>
 				<td>{item.name}</td>
 				<td>{item.calories}</td>
 				<td>{item.carbs}</td>
@@ -17,7 +17,9 @@ class Table extends React.Component {
 		var menuItems = this.props.menuItems.map((item, index) => this.menuItem(item, index));
 		return (
 			<div>
-				<table class="table">
+				<h3>Menu</h3>
+				<table className="table">
+					<tbody>
 					<tr>
 						<th>Name</th>
 						<th>Calories</th>
@@ -27,6 +29,7 @@ class Table extends React.Component {
 						<th>Size(g)</th>
 					</tr>
 					{menuItems}
+					</tbody>
 				</table>
 			</div>
 		)

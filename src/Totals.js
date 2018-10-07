@@ -1,16 +1,18 @@
 import React from 'react';
 
 class Totals extends React.Component {
-	menuItem(item, index) {
+	menuItem(id, item) {
 		return (
-				<tr key={item.name + "_name"} onClick={(e) => this.props.onDeleteMenuItem(item, index)}>{item.name}</tr>
+			<tr style={{"cursor": "pointer"}} key={id} onClick={(e) => this.props.onDeleteMenuItem(id)}><td>{item.name}</td></tr>
 		)
 	}
 	render() {
-		var menuItems = this.props.menuItems.map((item, index) => this.menuItem(item, index));
+		var menuItems = this.props.menuItems.map(item => this.menuItem(item.id, item.item));
 		return (
 			<div>
-				<table class="table">
+				<h3>Totals</h3>
+				<table className="table">
+				<tbody>
 					<tr>
 						<th>Calories</th>
 						<th>Carbs(g)</th>
@@ -25,12 +27,16 @@ class Totals extends React.Component {
 						<td>{this.props.nutritionTotal.fat}</td>
 						<td>{this.props.nutritionTotal.size}</td>
 					</tr>
+				</tbody>
 				</table>
-				<div>
-				<table class="table">
+				<table className="table">
+				<tbody>
+					<tr>
+						<th>Selected Items</th>
+					</tr>
 					{menuItems}
+				</tbody>
 				</table>
-				</div>
 			</div>
 		)
 	}
