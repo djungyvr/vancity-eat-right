@@ -71,7 +71,7 @@ class Info extends React.Component {
 	render() {
 		var restaurants = Object.keys(this.props.restaurants).map(name => this.restaurantName(name));
 		return (
-			<div className="container">
+			<div className="container-fluid">
 				<div className="row justify-content-center">
 					<h1>Vancity Eat Smart</h1>
 				</div>
@@ -79,14 +79,14 @@ class Info extends React.Component {
 					{restaurants}
 				</div>
 				<div className="row">
-					<div className="col-md">
+					<div className="col-md" style={{overflowX: 'scroll'}}>
 						<Totals
 							menuItems={this.state.selectedMenuItems}
 							onDeleteMenuItem={this.onDeleteMenuItem}
 							nutritionTotal={this.state.nutritionTotal}
 						/>
 					</div>
-					<div className="col-md">
+					<div className="col-md" style={{overflowX: 'scroll'}}>
 						<Table
 							menuItems={this.state.menuItems}
 							onSelectMenuItem={this.onSelectMenuItem}
