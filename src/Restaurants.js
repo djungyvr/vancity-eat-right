@@ -101,11 +101,11 @@ const cactusClub = [
 	{"fibre": 2, "carbs": 69, "vitamin_a": 30, "name": "White Chocolate Cheesecake", "sodium": 350, "vitamin_c": 4, "sugars": 59, "calories": 740, "fat": 46, "sat_fat": 28, "calcium": 10, "trans_fat": "0.5", "iron": 4, "protein": 10, "type": "DESSERTS", "cholestrol": 185, "size": 238}
 ];
 
-const earls = [
-	{name:"earlsfoo", calories:100, carbs:100, protein:10, fat:10,size:100},
-	{name:"earlsbar", calories:100, carbs:100, protein:10, fat:10,size:100},
-	{name:"earlsbaz", calories:100, carbs:100, protein:10, fat:10,size:100},
-];
+//const earls = [
+//	{name:"earlsfoo", calories:100, carbs:100, protein:10, fat:10,size:100},
+//	{name:"earlsbar", calories:100, carbs:100, protein:10, fat:10,size:100},
+//	{name:"earlsbaz", calories:100, carbs:100, protein:10, fat:10,size:100},
+//];
 
 const keg = [
 	{"type":"STARTERS + SOUPS","name":"Escargot","size":184,"calories":505,"fat":35.0,"sat_fat":15.0,"trans_fat":1.0,"cholestrol":141,"sodium":721,"carbs":40,"fibre":3.0,"sugars":3.0,"protein":14,"vitamin_a":15.0,"vitamin_c":31.0,"calcium":9.0,"iron":17.0},
@@ -231,7 +231,7 @@ const keg = [
 
 const restaurants = {
 	"Cactus Club": cactusClub,
-	"Earls": earls,
+//	"Earls": earls,
 	"The Keg": keg,
 };
 

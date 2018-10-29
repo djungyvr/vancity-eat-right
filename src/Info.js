@@ -79,14 +79,14 @@ class Info extends React.Component {
 					{restaurants}
 				</div>
 				<div className="row">
-					<div className="col-md" style={{overflowX: 'scroll'}}>
+					<div className="col">
 						<Totals
 							menuItems={this.state.selectedMenuItems}
 							onDeleteMenuItem={this.onDeleteMenuItem}
 							nutritionTotal={this.state.nutritionTotal}
 						/>
 					</div>
-					<div className="col-md" style={{overflowX: 'scroll'}}>
+					<div className="col">
 						<Table
 							menuItems={this.state.menuItems}
 							onSelectMenuItem={this.onSelectMenuItem}
