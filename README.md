@@ -6,10 +6,11 @@ Hopefully I'm not the only one who wanted this :)
 Currently Have Information on:
 - Cactus Club
 - The Keg
+- Earls
 
-If you're wondering why Earls isn't there, the pdf is formatted so badly that I can't scrape it :(
+<s>If you're wondering why Earls isn't there, the pdf is formatted so badly that I can't scrape it :(</s>
 
-Will happily accept PRs with Earls information :)
+Happily accepting PRs :)
 
 ## Available Scripts
 ### `npm start`
